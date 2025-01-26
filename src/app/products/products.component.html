@@ -1,0 +1,25 @@
+<div *ngIf="filteredProducts.length > 0; else noProducts" class="products">
+  <div
+    *ngFor="let product of filteredProducts"
+    class="product"
+    (click)="viewProductDetail(product.id)"
+  >
+    <div class="product-img">
+      <img [src]="product.image" alt="{{ product.title }}" />
+    </div>
+    <div class="product-info">
+      <div class="product-title">
+        <h3>{{ product.title }}</h3>
+      </div>
+      <div
+        class="product-price d-flex flex-row justify-content-between align-items-center"
+      >
+        <p>{{ product.category }}</p>
+        <span>{{ product.price | currency }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #noProducts>
+  <p>No products available.</p>
+</ng-template>

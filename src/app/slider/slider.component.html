@@ -1,0 +1,17 @@
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide" *ngFor="let slide of slides">
+      <img [src]="slide.image" [alt]="slide.title" />
+      <div class="caption d-flex flex-column justify-content-between">
+        <div class="caption-text">
+          <h1>{{ slide.title }}</h1>
+          <p>{{ slide.description }}</p>
+        </div>
+        <button [routerLink]="['/category', slide.category]" class="btn">
+          Discover Now
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="swiper-pagination"></div>
+</div>

@@ -1,0 +1,47 @@
+<div class="shop padding-global margin-global">
+  <div
+    class="filter d-flex flex-row justify-content-between align-items-center"
+  >
+    <input
+      type="text"
+      placeholder="Filter products..."
+      [(ngModel)]="filterText"
+      (input)="onFilterChange()"
+    />
+    <div class="price-range">
+      <label for="minPrice">Min Price:</label>
+      <input
+        type="number"
+        id="minPrice"
+        [(ngModel)]="minPrice"
+        (input)="onFilterChange()"
+      />
+      <label for="maxPrice">Max Price:</label>
+      <input
+        type="number"
+        id="maxPrice"
+        [(ngModel)]="maxPrice"
+        (input)="onFilterChange()"
+      />
+    </div>
+    <div class="category-filter">
+      <label for="category">Category:</label>
+      <select
+        id="category"
+        [(ngModel)]="selectedCategory"
+        (change)="onFilterChange()"
+      >
+        <option value="">All</option>
+        <option *ngFor="let category of categories" [value]="category">
+          {{ category }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <app-products
+    [filterText]="filterText"
+    [minPrice]="minPrice"
+    [maxPrice]="maxPrice"
+    [selectedCategory]="selectedCategory"
+  ></app-products>
+</div>

@@ -1,0 +1,25 @@
+<div *ngIf="product" class="product-detail padding-global margin-global">
+  <div class="product-title text-center">
+    <h2>{{ product.title }}</h2>
+  </div>
+  <div class="product-card d-flex flex-row justify-content-evenly">
+    <div class="product-img">
+      <img [src]="product.image" alt="{{ product.title }}" />
+    </div>
+    <div class="product-info flex-shrink-2">
+      <p>{{ product.description }}</p>
+      <p class="category">Category: {{ product.category }}</p>
+      <div class="product-price">
+        <p class="price">Price: {{ product.price | currency }}</p>
+        <p>
+          Rating: {{ product.rating.rate }} ({{ product.rating.count }} reviews)
+        </p>
+        <button class="btn" (click)="addToCart()">Add to cart</button>
+        <p *ngIf="message">{{ message }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!product">
+  <p>Loading...</p>
+</div>
